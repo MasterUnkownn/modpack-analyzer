@@ -1,3 +1,5 @@
-export default function App(){
-  return <h1>Modpack Analyzer Running 🚀</h1>
+import Dashboard from "./pages/Dashboard";
+
+export default function App() {
+  return <Dashboard />;
 }

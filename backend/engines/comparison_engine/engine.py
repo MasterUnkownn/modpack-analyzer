@@ -1,7 +1,3 @@
-# =========================
-# COMPARISON ENGINE (REAL)
-# =========================
-
 import asyncio
 
 class ComparisonEngine:
@@ -9,20 +5,22 @@ class ComparisonEngine:
     def __init__(self, bus, ws):
         self.bus = bus
         self.ws = ws
+        self.instances = {}
 
-        self.mods = []
+        self.bus.subscribe("instances_updated", self.on_instances)
 
-        self.bus.subscribe("mods_updated", self.on_mods)
-
-    async def on_mods(self, mods):
-        self.mods = mods
+    async def on_instances(self, instances):
+        self.instances = instances
 
     async def start(self):
         while True:
 
-            # Simulated client/server split for now
-            server = self.mods
-            client = self.mods
+            if "server" not in self.instances or "client" not in self.instances:
+                await asyncio.sleep(5)
+                continue
+
+            server = self.instances["server"]["mods"]
+            client = self.instances["client"]["mods"]
 
             server_map = {m["mod_id"]: m for m in server}
             client_map = {m["mod_id"]: m for m in client}
