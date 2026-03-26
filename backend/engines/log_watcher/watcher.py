@@ -6,5 +6,5 @@ class LogWatcher:
 
     async def start(self):
         while True:
-            await self.bus.publish("log_line", {"raw": "test log"})
+            await self.bus.publish("log_line", {"raw": "system heartbeat"})
             await asyncio.sleep(5)
