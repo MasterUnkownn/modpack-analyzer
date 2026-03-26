@@ -1,6 +1,6 @@
 import asyncio
 
-class Asset_engine:
+class AssetEngine:
     def __init__(self, bus, ws=None):
         self.bus = bus
         self.ws = ws

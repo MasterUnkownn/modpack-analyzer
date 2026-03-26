@@ -1,6 +1,6 @@
 import asyncio
 
-class Recipe_engine:
+class RecipeEngine:
     def __init__(self, bus, ws=None):
         self.bus = bus
         self.ws = ws

@@ -1,6 +1,6 @@
 import asyncio
 
-class Comparison_engine:
+class ComparisonEngine:
     def __init__(self, bus, ws=None):
         self.bus = bus
         self.ws = ws

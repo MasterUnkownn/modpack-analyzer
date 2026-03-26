@@ -1,6 +1,6 @@
 import asyncio
 
-class Clustering_engine:
+class ClusteringEngine:
     def __init__(self, bus, ws=None):
         self.bus = bus
         self.ws = ws

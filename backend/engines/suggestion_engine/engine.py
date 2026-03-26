@@ -1,6 +1,6 @@
 import asyncio
 
-class Suggestion_engine:
+class SuggestionEngine:
     def __init__(self, bus, ws=None):
         self.bus = bus
         self.ws = ws

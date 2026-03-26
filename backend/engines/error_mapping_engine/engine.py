@@ -1,6 +1,6 @@
 import asyncio
 
-class Error_mapping_engine:
+class ErrorMappingEngine:
     def __init__(self, bus, ws=None):
         self.bus = bus
         self.ws = ws

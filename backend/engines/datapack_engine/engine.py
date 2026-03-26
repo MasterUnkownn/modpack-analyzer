@@ -1,6 +1,6 @@
 import asyncio
 
-class Datapack_engine:
+class DatapackEngine:
     def __init__(self, bus, ws=None):
         self.bus = bus
         self.ws = ws

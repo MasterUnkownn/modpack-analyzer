@@ -1,6 +1,6 @@
 import asyncio
 
-class Confidence_engine:
+class ConfidenceEngine:
     def __init__(self, bus, ws=None):
         self.bus = bus
         self.ws = ws
