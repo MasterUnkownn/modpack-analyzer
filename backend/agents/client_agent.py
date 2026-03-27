@@ -6,7 +6,10 @@ import os
 import time
 import requests
 
-BACKEND = "http://YOUR_PHONE_IP:8000/api/instance/update"
+from config import CONFIG
+
+BACKEND = CONFIG["BACKEND_URL"] + "/api/instance/update"
+
 MODS_PATH = "./mods"
 
 def scan_mods():

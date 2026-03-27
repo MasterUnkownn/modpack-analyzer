@@ -13,7 +13,7 @@ from core.engine_manager import EngineManager
 from api.websocket.manager import WebSocketManager
 
 # ROUTES
-from api.routes import instance, logs
+from api.routes import instance, logs, recipes
 
 # ENGINES
 from engines.mod_scanner.scanner import ModScanner
@@ -89,6 +89,7 @@ async def websocket_endpoint(ws: WebSocket):
 app.include_router(instance.router, prefix="/api")
 app.include_router(logs.router, prefix="/api")
 logs.event_bus = event_bus
+app.include_router(recipes.router, prefix="/api")
 # Inject instance manager into route
 instance.instance_manager = instance_engine
 

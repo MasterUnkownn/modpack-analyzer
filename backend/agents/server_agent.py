@@ -5,9 +5,10 @@
 import time
 import requests
 import os
+from config import CONFIG
 
 LOG_PATH = "./logs/latest.log"
-BACKEND = "http://YOUR_PHONE_IP:8000/api/logs"
+BACKEND = CONFIG["BACKEND_URL"] + "/api/logs"
 
 def follow(file):
     file.seek(0, 2)

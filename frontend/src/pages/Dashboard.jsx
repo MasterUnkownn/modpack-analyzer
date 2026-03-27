@@ -54,34 +54,44 @@ export default function Dashboard() {
         </div>
       )}
 
-      <h2>Recipe Issues</h2>
-      {recipes.map((r, i) => (
-        <div key={i} style={{ color: "orange" }}>{r.message}</div>
-      ))}
+      <h2>Recipe Isimport { useEffect, useState } from "react";
+import { connectWebSocket } from "../services/websocket";
+import Panel from "../components/panels/Panel";
 
-      <h2>Asset Issues</h2>
-      {assets.map((a, i) => (
-        <div key={i} style={{ color: "purple" }}>{a.message}</div>
-      ))}
+export default function Dashboard() {
 
-      <h2>Mapped Errors</h2>
-      {errors.map((e, i) => (
-        <div key={i} style={{ color: "red" }}>
-          [{e.type}] {e.source || ""} → {e.message}
-        </div>
-      ))}
+  const [data, setData] = useState({
+    mods: 0,
+    errors: 0,
+    conflicts: 0
+  });
 
-      <h2>Suggestions</h2>
-      {suggestions.map((s, i) => (
-        <div key={i} style={{ color: "green" }}>
-          {s.title} → {s.action}
-        </div>
-      ))}
+  useEffect(() => {
+    connectWebSocket((msg) => {
 
-      <h2>Logs</h2>
-      {logs.map((l, i) => (
-        <div key={i}>{l.raw}</div>
-      ))}
+      if (msg.type === "mapped_errors") {
+        setData(prev => ({ ...prev, errors: msg.data.length }));
+      }
+
+      if (msg.type === "comparison") {
+        const conflicts = (msg.data.version_mismatch || []).length;
+        setData(prev => ({ ...prev, conflicts }));
+      }
+
+    });
+  }, []);
+
+  return (
+    <div>
+
+      <Panel title="Overview">
+        <div>Errors: {data.errors}</div>
+        <div>Conflicts: {data.conflicts}</div>
+      </Panel>
+
+      <Panel title="System Status">
+        Running and connected.
+      </Panel>
 
     </div>
   );

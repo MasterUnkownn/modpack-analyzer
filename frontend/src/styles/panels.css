@@ -1,0 +1,11 @@
+.panel {
+  background: var(--panel);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.panel-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
